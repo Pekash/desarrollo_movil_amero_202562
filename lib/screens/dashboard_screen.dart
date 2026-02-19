@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 import 'login_screen.dart';
 
-class DashboardScreen extends StatelessWidget {
+class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
 
+  @override
+  State<DashboardScreen> createState() => _DashboardScreenState();
+}
+
+class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     final appState = MyApp.of(context);
@@ -29,8 +34,13 @@ class DashboardScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Icon(
+              isDark ? Icons.nights_stay : Icons.wb_sunny,
+              size: 80,
+              color: Theme.of(context).colorScheme.primary,
+            ),
             const SizedBox(height: 16),
-            const SizedBox(height: 8),
+
             const SizedBox(height: 48),
             SizedBox(
               width: 200,
@@ -42,8 +52,7 @@ class DashboardScreen extends StatelessWidget {
                   (route) => false,
                 ),
                 icon: const Icon(Icons.logout),
-                label: const Text('Cerrar sesión',
-                    style: TextStyle(fontSize: 16)),
+                label: const Text('Cerrar sesión', style: TextStyle(fontSize: 16)),
                 style: OutlinedButton.styleFrom(
                   foregroundColor: Colors.red,
                   side: const BorderSide(color: Colors.red),
